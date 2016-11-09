@@ -4,7 +4,13 @@ The Java Cloudant Web Starter demonstrates how to use the Bluemix Cloudant NoSQL
 
 ### Running the application locally in Liberty
 
-1. [Download all the dependency](https://maven-repository.com/artifact/org.ektorp/org.ektorp/1.4.2) jars listed below and add them to `${server.config.dir}/lib`  For example: `wlp/usr/servers/defaultServer/lib`
+1. Download all the [ektorp dependency jars](https://maven-repository.com/artifact/org.ektorp/org.ektorp/1.4.2) and copy them to `${server.config.dir}/lib`  For example: `wlp/usr/servers/defaultServer/lib`. Use the commands below for reference, replacing the value for `outputDirectory`:
+    ```
+    # Download all the jars
+    mvn dependency:get -Dartifact=org.ektorp:org.ektorp:1.4.2
+    # Copy to liberty lib directory
+    mvn dependency:copy-dependencies -f $HOME/.m2/repository/org/ektorp/org.ektorp/1.4.2/org.ektorp-1.4.2.pom -DoutputDirectory=$HOME/wlp/usr/servers/defaultServer/lib
+    ```
 2. In your server.xml, create a shared `library` definition for all the jars and add a classloader element to the `webApplication` element as shown below
     ```
     	<library id='cloudantNoSQLDB-library'>
