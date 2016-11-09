@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -256,7 +257,7 @@ public class ResourceServlet {
 		if (part != null) {
 			InputStream inputStream = part.getInputStream();
 			try {
-				db.saveAttachment(inputStream, fileName, part.getContentType(), id, (String) obj.get("_rev"));
+				db.saveAttachment(inputStream, URLEncoder.encode(fileName,"UTF-8"), part.getContentType(), id, (String) obj.get("_rev"));
 			} finally {
 				inputStream.close();
 			}

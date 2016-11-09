@@ -3,6 +3,7 @@ package example.nosql;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -56,7 +57,7 @@ public class AttachServlet extends HttpServlet {
 
 		response.setHeader("Content-Disposition", "inline; filename=\"" + key + "\"");
 
-		InputStream dbResponse = CloudantClientMgr.getDB().find(id + "/" + key);
+		InputStream dbResponse = CloudantClientMgr.getDB().find(id + "/" + URLEncoder.encode(key,"UTF-8"));
 		OutputStream output = response.getOutputStream();
 
 		try {
