@@ -35,13 +35,12 @@ public class CloudantClientMgr {
 	}
 
 	private static CloudantClient createClient() {
-		// VCAP_SERVICES is a system environment variable
-		// Parse it to obtain the NoSQL DB connection info
 		String VCAP_SERVICES = System.getenv("VCAP_SERVICES");
 		String serviceName = null;
 
 		if (VCAP_SERVICES != null) {
-			// parse the VCAP JSON structure
+			// When running in Bluemix, the VCAP_SERVICES env var will have the credentials for all bound/connected services
+			// Parse the VCAP JSON structure looking for cloudant.
 			JsonObject obj = (JsonObject) new JsonParser().parse(VCAP_SERVICES);
 			Entry<String, JsonElement> dbEntry = null;
 			Set<Entry<String, JsonElement>> entries = obj.entrySet();
@@ -66,10 +65,14 @@ public class CloudantClientMgr {
 			password = obj.get("password").getAsString();
 
 		} else {
-			throw new RuntimeException("VCAP_SERVICES not found");
+			//If VCAP_SERVICES env var doesn't exist: running locally.
+			//Replace these values with your Cloudant credentials
+			user = "REPLACE_WITH_CLOUDANT_USERNAME";
+			password = "REPLACE_WITH_CLOUDANT_PASSWORD";
 		}
 
 		try {
+			System.out.println("Connecting to Cloudant : " + user);
 			CloudantClient client = ClientBuilder.account(user)
 					.username(user)
 					.password(password)
