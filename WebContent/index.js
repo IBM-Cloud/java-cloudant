@@ -86,7 +86,7 @@ function uploadFile(node) {
 
     var id = row.getAttribute('data-id');
 
-    var queryParams = "id=" + (id == null ? -1 : id);
+    var queryParams = (id == null) ? "" : "id=" + id;
     queryParams += "&name=" + row.firstChild.firstChild.value;
     queryParams += "&value=" + row.firstChild.nextSibling.firstChild.value;
     queryParams+= "&filename="+file.name;
