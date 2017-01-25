@@ -1,4 +1,8 @@
 ---
+declared-services: 
+  sample-java-cloudant-cloudantNoSQLDB:
+    label: cloudantNoSQLDB 
+    plan: Lite 
 applications:
 - name: sample-java-cloudant
   random-route: true
