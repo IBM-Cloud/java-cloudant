@@ -1,6 +1,8 @@
-# Java Cloudant Web Starter Overview
+# Java Cloudant Sample
 
-The Java Cloudant Web Starter demonstrates how to use the Bluemix Cloudant NoSQL DB service. This application helps users organize their favorite files. The UI talks to a RESTful JAX-RS CRUD backend API.
+This application demonstrates how to use the Bluemix Cloudant NoSQL DB service. It helps users organize their favorite files. The UI talks to a RESTful JAX-RS CRUD backend API.
+
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
 
 ### Running the application locally in Liberty
 
@@ -44,9 +46,3 @@ The Java Cloudant Web Starter demonstrates how to use the Bluemix Cloudant NoSQL
     	user = "REPLACE_WITH_CLOUDANT_USERNAME";
     	password = "REPLACE_WITH_CLOUDANT_PASSWORD";
     ```
-## Decomposition
-
-* See src/example/nosql/CloudantClientMgr.java for how to obtain and use the Cloudant credentials
-* See src/example/nosql/AttachServlet.java for the file upload API
-* See src/example/noqsl/ResourceServlet.java for the file CRUD API
-* See WebContent/index.js and WebContent/util.js for how the front-end calls the back-end API
