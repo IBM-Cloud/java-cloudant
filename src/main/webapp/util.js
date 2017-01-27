@@ -17,8 +17,8 @@ function xhrGet(url, callback, errback){
 	var xhr = new createXHR();
 	xhr.open("GET", url, true);
 	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4){
-			if(xhr.status === 200){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
 				callback(parseJson(xhr.responseText));
 			}else{
 				errback("Error: "+xhr.responseText);
@@ -35,8 +35,8 @@ function xhrPut(url, data, callback, errback){
 	xhr.open("PUT", url, true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4){
-			if(xhr.status === 200){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
 				callback();
 			}else{
 				errback("Error: "+xhr.responseText);
@@ -54,8 +54,8 @@ function xhrAttach(url, data, callback, errback)
 	xhr.open("POST", url, true);
 	//xhr.setRequestHeader("Content-type", "multipart/form-data");
 	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4){
-			if(xhr.status === 200){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
 				callback(parseJson(xhr.responseText));
 			}else{
 				errback("Error: "+xhr.responseText);
@@ -72,8 +72,8 @@ function xhrPost(url, data, callback, errback){
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4){
-			if(xhr.status === 200){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
 				callback(parseJson(xhr.responseText));
 			}else{
 				errback("Error: "+xhr.responseText);
@@ -89,8 +89,8 @@ function xhrDelete(url, callback, errback){
 	var xhr = new createXHR();
 	xhr.open("DELETE", url, true);
 	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4){
-			if(xhr.status === 200){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
 				callback();
 			}else{
 				errback("Error: "+xhr.responseText);
@@ -103,7 +103,7 @@ function xhrDelete(url, callback, errback){
 }
 
 function parseJson(str){
-	return JSON.parse(str);
+	return window.JSON ? JSON.parse(str) : eval('(' + str + ')');
 }
 
 function objectToQuery(map){
@@ -111,7 +111,7 @@ function objectToQuery(map){
 	for(var name in map){
 		var value = map[name];
 		var assign = enc(name) + "=";
-		if(value && value instanceof Array){
+		if(value && (value instanceof Array || typeof value == 'array')){
 			for(var i = 0, len = value.length; i < len; ++i){
 				pairs.push(assign + enc(value[i]));
 			}
