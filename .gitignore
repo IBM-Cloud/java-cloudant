@@ -1,4 +1,2 @@
 target/*
-|target/*.war
-/.apt_generated/
-/target/
+!target/JavaCloudantApp.war
