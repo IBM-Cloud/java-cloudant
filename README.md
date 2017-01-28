@@ -4,7 +4,33 @@ This application demonstrates how to use the Bluemix Cloudant NoSQL DB service. 
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/java-cloudant)
 
-Developing in Eclipse
+## Running the application using the command-line
+
+1. Open the [Bluemix dashbaord](bluemix.net) create/select your Cloudant service -> Service Credentials  -> View Credentials
+  - Copy the credentials to src/example/nosql/CloudantClientMgr.java
+    ```
+      user = "REPLACE_WITH_CLOUDANT_USERNAME";
+      password = "REPLACE_WITH_CLOUDANT_PASSWORD";
+    ```  
+
+2. Execute full Maven build to create the `target/JavaCloudantApp.war` file:
+    ```bash
+    $ mvn clean install
+    ```
+
+3. Download and install Liberty, then use it to run the built application from step 1:
+    ```bash
+    $ mvn liberty:run-server
+    ```
+
+    Once the server is running, the application will be available under [http://localhost:9080/JavaHelloWorldApp](http://localhost:9080/JavaHelloWorldApp).
+
+4. Update the application details in the `manfest.yml` file and use the following command to push the application to Bluemix:
+    ```bash
+    $ cf push
+    ```
+    
+## Developing and Deploying using Eclipse
 
 IBM® Eclipse Tools for Bluemix® provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with Bluemix.
 
