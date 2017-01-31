@@ -309,6 +309,5 @@ function stopLoadingMessage()
 }
 
 showLoadingMessage();
-//updateServiceInfo();
 loadItems();
 

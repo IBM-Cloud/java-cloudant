@@ -30,7 +30,7 @@ public class CloudantClientMgr {
 				}
 				cloudant = createClient();
 
-			} // end synchronized
+			}
 		}
 	}
 

@@ -1,7 +1,6 @@
 package example.nosql;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 
@@ -25,7 +24,6 @@ import com.google.gson.JsonObject;
 @MultipartConfig()
 public class AttachServlet extends HttpServlet {
 
-	private static final int readBufferSize = 8192;
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
