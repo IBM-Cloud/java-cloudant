@@ -19,8 +19,8 @@ public class CloudantClientMgr {
 
 	private static String databaseName = "sample_nosql_db";
 
-	private static String user = null;
-	private static String password = null;
+	private static String user = "REPLACE_WITH_CLOUDANT_USERNAME";
+	private static String password = "REPLACE_WITH_CLOUDANT_PASSWORD";
 
 	private static void initClient() {
 		if (cloudant == null) {
@@ -65,10 +65,7 @@ public class CloudantClientMgr {
 			password = obj.get("password").getAsString();
 
 		} else {
-			//If VCAP_SERVICES env var doesn't exist: running locally.
-			//Replace these values with your Cloudant credentials
-			user = "REPLACE_WITH_CLOUDANT_USERNAME";
-			password = "REPLACE_WITH_CLOUDANT_PASSWORD";
+			System.out.println("VCAP_SERVICES env var doesn't exist: running locally.");
 		}
 
 		try {

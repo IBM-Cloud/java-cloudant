@@ -13,7 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.commons.codec.binary.Base64;
+
 import com.cloudant.client.api.Database;
+import com.cloudant.client.api.model.Document;
+import com.cloudant.client.api.model.Params;
+import com.cloudant.client.org.lightcouch.Attachment;
 import com.google.gson.JsonObject;
 
 @WebServlet("/attach")
@@ -55,20 +60,13 @@ public class AttachServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String key = request.getParameter("key");
 
-		response.setHeader("Content-Disposition", "inline; filename=\"" + key + "\"");
+		Document fav = CloudantClientMgr.getDB().find(Document.class, id, new Params().attachments());
 
-		InputStream dbResponse = CloudantClientMgr.getDB().find(id + "/" + URLEncoder.encode(key,"UTF-8"));
 		OutputStream output = response.getOutputStream();
-
-		try {
-			int readBytes = 0;
-			byte[] buffer = new byte[readBufferSize];
-			while ((readBytes = dbResponse.read(buffer)) >= 0) {
-				output.write(buffer, 0, readBytes);
-			}
-		} finally {
-			dbResponse.close();
-		}
+		Attachment attachment = fav.getAttachments().get(URLEncoder.encode(key, "UTF-8"));
+		String attachmentData = attachment.getData();
+		response.setContentType(attachment.getContentType());
+		output.write(Base64.decodeBase64(attachmentData));
 
 	}
 
