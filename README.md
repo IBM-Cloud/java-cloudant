@@ -8,6 +8,7 @@ This application demonstrates how to use the Bluemix Cloudant NoSQL DB service. 
 
 1. Open the [Bluemix dashbaord](bluemix.net), create/select your Cloudant service -> Service Credentials  -> View Credentials
   - Copy the credentials to src/example/nosql/CloudantClientMgr.java
+  
     ```
       user = "REPLACE_WITH_CLOUDANT_USERNAME";
       password = "REPLACE_WITH_CLOUDANT_PASSWORD";
@@ -48,6 +49,7 @@ IBM® Eclipse Tools for Bluemix® provides plug-ins that can be installed into a
 
 4. Open the [Bluemix dashbaord](bluemix.net) create/select your Cloudant service -> Service Credentials  -> View Credentials
   - Copy the credentials to src/example/nosql/CloudantClientMgr.java
+  
     ```
       user = "REPLACE_WITH_CLOUDANT_USERNAME";
       password = "REPLACE_WITH_CLOUDANT_PASSWORD";
@@ -60,7 +62,7 @@ IBM® Eclipse Tools for Bluemix® provides plug-ins that can be installed into a
 
 5. Create a Bluemix server definition:
   - In the `Servers` view, right-click -> `New` -> `Server`
-  - Select `IBM` -> `IBM Bluemix` and follow the steps in the wizard.\
+  - Select `IBM` -> `IBM Bluemix` and follow the steps in the wizard.
   - Enter your credentials and click `Next`
   - Select your `org` and `space` and click `Finish`
 
