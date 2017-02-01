@@ -7,7 +7,7 @@ This application demonstrates how to use the Bluemix Cloudant NoSQL DB service. 
 ## Building and running the application using the command-line
 
 1. Open the [Bluemix dashboard](https://bluemix.net), create/select your Cloudant service -> Service Credentials  -> View Credentials
-  - Copy the credentials to src/example/nosql/CloudantClientMgr.java
+  - Copy the credentials to src/main/java/example/nosql/CloudantClientMgr.java
   
     ```
       user = "REPLACE_WITH_CLOUDANT_USERNAME";
