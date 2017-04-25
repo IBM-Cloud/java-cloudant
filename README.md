@@ -26,7 +26,14 @@ This application demonstrates how to use the Bluemix Cloudant NoSQL Database ser
 
     Once the server is running, the application will be available under [http://localhost:9080/JavaCloudantApp](http://localhost:9080/JavaCloudantApp).
 
-4. Update the application details in the `manfest.yml` file. Change the `name` field to your Bluemix Application Name. Use the following command to push the application to Bluemix:
+4. Update the application details in the `manifest.yml` file. Change the `name` field to your Bluemix Application Name and change the `services` field to your Cloudant service instance name. Connect and Login to Bluemix using the following commands:
+    ```bash
+    $ cf api https://api.ng.bluemix.net
+    $ cf login -u username -o org_name -s space_name
+    ```
+    (You can find the `org_name`, `space_name` on the Bluemix dashboard and replace `username` with the `mail-id` associated with the account)
+    
+    Use the following command to push the application to Bluemix:
     ```bash
     $ cf push
     ```
