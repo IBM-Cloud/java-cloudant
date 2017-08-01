@@ -6,7 +6,7 @@ declared-services:
 applications:
 - name: sample-java-cloudant
   random-route: true
-  memory: 256M
+  memory: 512M
   path: target/JavaCloudantApp.war
   services:
   - sample-java-cloudant-cloudantNoSQLDB
